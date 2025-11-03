@@ -12,7 +12,7 @@ $(function(){
                 'id-token': localStorage.getItem('visit_token'),
                 'user-verb': 'remember-me'
             };
-            $.post('handler', formData, function(result) { 
+            $.post('api/handler', formData, function(result) { 
                 if(result.status == 'error') { 
                     localStorage.clear();
                     cookiePermission();
@@ -43,7 +43,7 @@ function changeLang(lang, option) {
         "user-verb":"change-lang",
         "cookie-box":option
     };
-    $.post('handler', frontData, function(){ 
+    $.post('api/handler', frontData, function(){ 
         if (option) { cookiePermission(); }
         else { window.location.reload(); }
     });
@@ -73,7 +73,7 @@ $(document).on('submit', '#cookie-form', async function(e) {
         formArray.push({name: "id-token", value: idToken});
         localStorage.setItem('visit_token', idToken);
     }
-    $.post('handler', formArray, function(result) { 
+    $.post('api/handler', formArray, function(result) { 
         if(result.lang_changed) { location.reload(); }
         $('#cookies').fadeOut(200);
     });

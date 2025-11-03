@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HandlerController;
-use App\Http\Controllers\ConfigController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\User;
@@ -41,5 +39,3 @@ Route::get('cookies', function(){
         return view('popups.cookies')->with('lang', $lang);
     }
 });
-
-Route::post('handler', [HandlerController::class, 'handle']);
