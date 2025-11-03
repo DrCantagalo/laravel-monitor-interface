@@ -8,13 +8,17 @@ use Illuminate\Support\Facades\App;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
-Route::fallback(function () {
-    return view('fallback');
-});
+Route::middleware(['set.locale'])->group(function () {
+    
+    Route::fallback(function () {
+        return view('fallback');
+    });
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+    Route::get('/', function () {
+        return view('index');
+    })->name('index');
+
+});
 
 Route::get('legal', function () {
     return redirect()->away('https://cantagalo.it/legal');
