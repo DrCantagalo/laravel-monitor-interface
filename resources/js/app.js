@@ -6,7 +6,7 @@ import $ from 'jquery';
 $(function(){
     let currentURL = window.location.href;
     let currentFile = currentURL.substring(currentURL.lastIndexOf('/') + 1) || 'index';
-    if (!window.AppData.cookiePermission && currentFile !== 'legal') { 
+    if (!window.AppData.cookiePermission) { 
         if (localStorage.getItem('visit_token') !== null) {
             let formData = {
                 'id-token': localStorage.getItem('visit_token'),
