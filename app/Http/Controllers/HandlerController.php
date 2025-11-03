@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Monitor;
 use Illuminate\Support\Str;
 use Aws\Ses\SesClient;
 use Aws\Exception\AwsException;
@@ -99,7 +98,7 @@ class HandlerController extends Controller
         $lang_changed = 0;
         $token = $request->input('id-token');
         Session::put('remember_me', $token);
-        if(session('monitor_id', false)) {
+        if(class_exists('App\Models\Monitor')) {
             Session::put('permission', true);
             $user = Monitor::where('data->id-token', $token)->first();
             if (!empty($user->data['lang'])) {
