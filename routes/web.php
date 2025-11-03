@@ -34,7 +34,7 @@ Route::get('cookies', function(){
         $lang = session('lang');
         App::setLocale($lang);
     }
-    if(session('reload')) { session()->forget('reload'); }
+    if(session('avoid_monitor')) { session()->forget('avoid_monitor'); }
     if (!session('show_cookie')) { return view('fallback'); }
     else {
         session()->forget('show_cookie');

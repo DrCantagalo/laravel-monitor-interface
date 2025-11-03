@@ -98,7 +98,7 @@ class HandlerController extends Controller
         $lang_changed = 0;
         $token = $request->input('id-token');
         Session::put('remember_me', $token);
-        if(class_exists('App\Models\Monitor')) {
+        if(class_exists('Monitor\Models\Monitor')) {
             Session::put('permission', true);
             $user = Monitor::where('data->id-token', $token)->first();
             if (!empty($user->data['lang'])) {
