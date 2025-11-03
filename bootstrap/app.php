@@ -11,9 +11,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        
         $middleware->alias([
             'set.locale' => \App\Http\Middleware\SetLocaleMethod::class,
         ]);
+        
+        $middleware->api(append: [
+            \App\Http\Middleware\PreventRobotsIndexing::class,
+        ]);
+        
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
