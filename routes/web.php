@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
-Route::middleware(['set.locale'])->group(function () {
+Route::middleware(['set.locale', 'check.cookie'])->group(function () {
     
     Route::fallback(function () {
         return view('fallback');

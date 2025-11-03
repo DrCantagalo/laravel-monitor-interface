@@ -19,6 +19,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api(append: [
             \App\Http\Middleware\PreventRobotsIndexing::class,
         ]);
+
+        $middleware->alias([
+            'check.cookie' => \App\Http\Middleware\CheckCookieConsent::class,
+        ]);
         
     })
     ->withExceptions(function (Exceptions $exceptions): void {
