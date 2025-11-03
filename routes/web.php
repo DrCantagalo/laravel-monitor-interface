@@ -42,24 +42,4 @@ Route::get('cookies', function(){
     }
 });
 
-Route::get('robots.txt', function (ConfigController $config, Request $request) {
-    $config->monitor_route($request);
-    $isProduction = app()->environment('production');
-    $content = $isProduction
-        ? <<<TXT
-User-agent: *
-Disallow: /supercontrols/
-Disallow: /handler/
-Allow: /
-
-Sitemap: https://{$_SERVER['HTTP_HOST']}/sitemap.xml
-TXT
-        : <<<TXT
-User-agent: *
-Disallow: /
-TXT;
-    return response($content, 200)
-        ->header('Content-Type', 'text/plain');
-});
-
 Route::post('handler', [HandlerController::class, 'handle']);
