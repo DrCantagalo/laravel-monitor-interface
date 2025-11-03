@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\App;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
-Route::fallback(function (ConfigController $config, Request $request) {
+Route::fallback(function () {
     return view('fallback');
 });
 
-Route::get('/', function (ConfigController $config, Request $request) {
+Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('legal', function (ConfigController $config, Request $request) {
-    return view('legal');
+Route::get('legal', function () {
+    return redirect()->away('https://cantagalo.it/legal');
 })->name('legal');
 
 Route::get('cookies', function(){

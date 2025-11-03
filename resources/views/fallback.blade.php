@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title', __('Page not found'))
 @section('description', __("Page not found") . ". " . __("The page you are looking for does not exist or has been moved"))
-@section('meta-image', Vite::asset('resources/images/OGbw.png'))
 @section('main')
     <main class="pt16 flex flex-col items-center justify-center h-[80vh] text-center px-6">
         <h1 class="text-6xl font-extrabold text-gray-800">404</h1>
