@@ -44,13 +44,13 @@ class HandlerController extends Controller
         if($cookie_box) { Session::put('templang', $lang); }
         else {
             Session::put('lang', $lang);
-            $user = Monitor::find(session('user_id'));
-            $user->data['lang'] = $lang;
-            $user->save();
+            if(session('monitor_id', false)){
+                $monitor = Monitor::find(session('monitor_id'));
+                $monitor->data['lang'] = $lang;
+                $monitor->save();
+            }
         }
-        Session::put('reload', 1);
-        if(!session('permission', false)) { session(['show_cookie' => 1]); }
-        
+        Session::put('avoid_monitor', 1);
         return response()->json([
             'status' => 'ok',
             'action' => 'change-lang',
@@ -65,67 +65,62 @@ class HandlerController extends Controller
             'visits' => 'required|integer|min:1'
         ]);
         $frontData = $request->except(['user-verb', '_token', 'remember-decision']);
-        $user = Monitor::find(session('user_id'));
-        foreach ($frontData as $key => $value) { $user->data[$key] = $value; }
+        if(session('monitor_id', false)) {
+            $monitor = Monitor::find(session('monitor_id'));
+            foreach ($frontData as $key => $value) { $monitor->data[$key] = $value; }
+        }
         $lang_changed = 0;
         if (!empty($frontData['ipapi_languages'])) {
             $lang = explode(',', $frontData['ipapi_languages'])[0];
             if (Str::contains($lang, 'it')) { $lang = 'it'; }
             elseif (Str::contains($lang, 'pt')) { $lang = 'pt'; }
             else { $lang = 'en'; }
-            $user->data['lang'] = $lang;
+            if(isset($monitor)) { $monitor->data['lang'] = $lang; }
             if (session('lang') !== $lang) { 
                 Session::put('lang', $lang);
                 $lang_changed = 1;
-                Session::put('reload', 1);
+                Session::put('avoid_monitor', 1);
             }
         }
-        else { $user->data['lang'] = session('lang'); }
-        $user->save();
+        else { if(isset($monitor)) { $monitor->data['lang'] = session('lang'); } }
+        if(isset($monitor)) { $monitor->save(); }
         Session::put('permission', true);
         return response()->json([
             'status' => 'ok',
             'action' => 'cookie-permission',
-            'monitor_id' => $user->id,
             'lang_changed' => $lang_changed
         ]);
     }
 
     protected function rememberMe(Request $request)
     {
-        //depois adicionar camada de proteção com Illuminate\Cache\RateLimiter
         $request->validate(['id-token' => 'required|max:30']);
         $status = 'ok';
         $lang_changed = 0;
         $token = $request->input('id-token');
-        $user = Monitor::where('data->id-token', $token)->first();
-        if ($user) {
-            if(session('user_id', false) && session('user_id') != $user->id){ 
-                Monitor::find(session('user_id'))->delete();
-            }
-            $user->newVisit(session()->getId());
-            Session::put('user_id', $user->id);
+        Session::put('remember_me', $token);
+        if(session('monitor_id', false)) {
             Session::put('permission', true);
+            $user = Monitor::where('data->id-token', $token)->first();
             if (!empty($user->data['lang'])) {
                 $lang = $user->data['lang'];
                 if (session('lang') !== $lang) { 
                     Session::put('lang', $lang);
                     $lang_changed = 1;
-                    Session::put('reload', 1);
+                    Session::put('avoid_monitor', 1);
                 }
             }
         }
         else { $status = 'error'; }
-        $user_id = session('user_id');
+
         return response()->json([
             'status' => $status,
             'action' => 'remember-me',
-            'monitor_id' => $user_id,
             'lang_changed' => $lang_changed
         ]);
     }
 
-    protected function checkHash(Request $request)
+    /*protected function checkHash(Request $request)
     {
         App::setLocale(session('lang'));
 
@@ -185,9 +180,9 @@ class HandlerController extends Controller
         Session::put('email_temp', $email);
         Session::put('verification_code', $verification_code);
         return back();
-    }
+    }*/
 
-    public function createAdmin(Request $request)
+    /*public function createAdmin(Request $request)
     {
         App::setLocale(session('lang'));
         
@@ -243,9 +238,9 @@ class HandlerController extends Controller
                 __("internal error") => __("We had a problem registering your credentials. Please try again later.")
             ]);
         }
-    }
+    }*/
 
-    public function signin(Request $request){
+    /*public function signin(Request $request){
         App::setLocale(session('lang'));
 
         $request->validate([
@@ -259,5 +254,5 @@ class HandlerController extends Controller
             return back();
         }
         else{ return back()->withErrors(['email' => __('Invalid Credentials.')])->withInput(); }
-    }
+    }*/
 }
