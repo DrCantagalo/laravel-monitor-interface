@@ -26,7 +26,7 @@ Route::get('cookies', function(){
     if(session('templang', false)) { 
         $lang = session('templang');
         App::setLocale($lang);
-        session()->forget('templang');
+        //session()->forget('templang');
     }
     else { 
         $lang = session('lang');
