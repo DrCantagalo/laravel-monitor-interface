@@ -46,7 +46,7 @@ class HandlerController extends Controller
         $cookie_box = $request->input('cookie-box', false);
         if($cookie_box) { 
             Session::put('templang', $lang);
-            Session::put('show_cookie', 1);
+            session(['show_cookie' => true]);
         }
         else {
             Session::put('lang', $lang);
