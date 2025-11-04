@@ -43,8 +43,8 @@ class HandlerController extends Controller
             'cookie-box' => 'nullable|boolean'
         ]);
         $lang = $request->input('lang', 'en');
-        return $lang;/*
         $cookie_box = $request->input('cookie-box', false);
+        return $cookie_box;/*
         if($cookie_box) { Session::put('templang', $lang); }
         else {
             Session::put('lang', $lang);
