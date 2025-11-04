@@ -38,8 +38,12 @@ class HandlerController extends Controller
 
     protected function changeLang(Request $request)
     {
-        return 'You are inside!';
-        /*$lang = $request->input('lang', 'en');
+        $request->validate([
+            'lang' => 'required|in:en,it,pt', 
+            'cookie-box' => 'nullable|boolean'
+        ]);
+        return 'Validated';/*
+        $lang = $request->input('lang', 'en');
         $cookie_box = $request->input('cookie-box', false);
         if($cookie_box) { Session::put('templang', $lang); }
         else {
