@@ -54,11 +54,12 @@ class HandlerController extends Controller
             }
         }
         Session::put('avoid_monitor', 1);
-        return response()->json([
+        return response()->json(Session::all());
+        /*return response()->json([
             'status' => 'ok',
             'action' => 'change-lang',
             'lang' => $lang
-        ]);
+        ]);*/
     }
 
     protected function cookiePermission(Request $request)
