@@ -21,6 +21,10 @@ Route::middleware(['set.locale', 'check.cookie'])->group(function () {
         return view('signup');
     })->name('signup');
 
+    Route::get('password', function () {
+        return view('password');
+    })->name('password');
+
 });
 
 Route::get('legal', function () {

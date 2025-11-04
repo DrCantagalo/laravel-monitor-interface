@@ -61,7 +61,7 @@
                     </ul>
                 @endif
                 <div class="w-full py-4 bg-white text-center text-sm text-gray-600">
-                    <a href="{{ route('credentials') }}" 
+                    <a href="{{ route('password') }}" 
                     class="hover:text-gray-800 hover:font-medium transition">
                         @lang('Forgot your password?')
                     </a>
