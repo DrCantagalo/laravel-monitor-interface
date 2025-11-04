@@ -8,7 +8,7 @@
 
         <h2 class="text-lg font-semibold">@lang('Your Privacy is Important')</h2>
 
-        <p>{{dd(session()->all())}}</p>
+        <p>{{json_encode(dd(session()->all()))}}</p>
 
         <p class="text-xs leading-relaxed">
             @lang('This website uses cookies to personalize your experience. To understand how we use your data, please read our')
