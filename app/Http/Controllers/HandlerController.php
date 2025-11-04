@@ -45,7 +45,6 @@ class HandlerController extends Controller
         $lang = $request->input('lang', 'en');
         $cookie_box = $request->input('cookie-box', false);
         if($cookie_box) { Session::put('templang', $lang); }
-        return session('templang');/*
         else {
             Session::put('lang', $lang);
             if(session('monitor_id', false)){
@@ -59,7 +58,7 @@ class HandlerController extends Controller
             'status' => 'ok',
             'action' => 'change-lang',
             'lang' => $lang
-        ]);*/
+        ]);
     }
 
     protected function cookiePermission(Request $request)
