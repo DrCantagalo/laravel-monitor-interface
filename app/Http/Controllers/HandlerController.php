@@ -25,12 +25,12 @@ class HandlerController extends Controller
                 return $this->cookiePermission($request);
             case 'remember-me':
                 return $this->rememberMe($request);
-            case 'check-hash':
+            /*case 'check-hash':
                 return $this->checkHash($request);
             case 'create-admin':
                 return $this->createAdmin($request);
             case 'sign-in':
-                return $this->signin($request);
+                return $this->signin($request);*/
             default:
                 return response()->json(['status' => 'invalid-verb'], 400);
         }
@@ -38,7 +38,8 @@ class HandlerController extends Controller
 
     protected function changeLang(Request $request)
     {
-        $lang = $request->input('lang', 'en');
+        return 'You are inside!';
+        /*$lang = $request->input('lang', 'en');
         $cookie_box = $request->input('cookie-box', false);
         if($cookie_box) { Session::put('templang', $lang); }
         else {
@@ -54,7 +55,7 @@ class HandlerController extends Controller
             'status' => 'ok',
             'action' => 'change-lang',
             'lang' => $lang
-        ]);
+        ]);*/
     }
 
     protected function cookiePermission(Request $request)
