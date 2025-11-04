@@ -59,10 +59,11 @@
     "Admin already exist.":"O administrador já existe.",
     "Wrong data.":"Dados errados.",
     "Admin tools for security and monitoring":"Ferramentas administrativas para segurança e monitoramento.",
-    "Sign in to the Supercontrols":"Faça login no Supercontrols",
+    "Sign in to the":"Faça login no",
     "Remember me in the next visit":"Lembre-se de mim na próxima visita.",
     "Invalid Credentials.":"Credenciais inválidas.",
     "Forgot your password?":"Esqueceu sua senha?",
     "CRM / Access Monitor":"CRM / Monitor de Acesso",
-    "Anti-scraping tools":"Ferramentas anti-scraping"
+    "Anti-scraping tools":"Ferramentas anti-scraping",
+    "Don't have an account yet? Sign up!":"Ainda não tem uma conta? Cadastre-se!"
 }

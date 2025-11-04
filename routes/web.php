@@ -17,6 +17,10 @@ Route::middleware(['set.locale', 'check.cookie'])->group(function () {
         return view('index');
     })->name('index');
 
+    Route::get('signup', function () {
+        return view('signup');
+    })->name('signup');
+
 });
 
 Route::get('legal', function () {
