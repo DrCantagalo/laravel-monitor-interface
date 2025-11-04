@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\HandlerController;
 
 Route::middleware(['set.locale', 'check.cookie'])->group(function () {
     
