@@ -4,8 +4,6 @@ import './gsap';
 import $ from 'jquery';
 
 $(function(){
-    //let currentURL = window.location.href;
-    //let currentFile = currentURL.substring(currentURL.lastIndexOf('/') + 1) || 'index';
     if (!window.AppData.cookiePermission) { 
         if (localStorage.getItem('visit_token') !== null) {
             let formData = {
@@ -43,10 +41,9 @@ function changeLang(lang, option) {
         "user-verb":"change-lang",
         "cookie-box":option
     };
-    $.post('api/handler', frontData, function(data){
-        console.log(data);
-        /*if (option) { cookiePermission(); }
-        else { window.location.reload(); }*/
+    $.post('api/handler', frontData, function(){
+        if (option) { cookiePermission(); }
+        else { window.location.reload(); }
     });
 }
 
