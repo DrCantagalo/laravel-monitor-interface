@@ -38,14 +38,4 @@
 
         <input type="hidden" name="user-verb" value="cookie-permission">
     </form>
-    @php
-        // Captura todos os dados da sessão em um array
-        $sessionData = session()->all();
-    @endphp
-
-    {{-- Exibe os dados da sessão em formato legível --}}
-    <div style="background: #FFFACD; border: 1px solid #FFD700; padding: 10px; margin-bottom: 20px; font-family: monospace; white-space: pre;">
-        <h3>DEBUG: Dados da Sessão</h3>
-        Session ID no View: {{ session()->getId() }}
-    </div>
 </div>

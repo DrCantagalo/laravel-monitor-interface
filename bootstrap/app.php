@@ -16,10 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'set.locale' => \App\Http\Middleware\SetLocaleMethod::class,
             'check.cookie' => \App\Http\Middleware\CheckCookieConsent::class,
-        ]);
-        
-        $middleware->api(append: [
-            \App\Http\Middleware\PreventRobotsIndexing::class,
+            'avoid.robots' => \App\Http\Middleware\PreventRobotsIndexing::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -7,5 +7,3 @@ use App\Http\Controllers\HandlerController;
 /*Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');*/
-
-Route::post('handler', [HandlerController::class, 'handle']);
