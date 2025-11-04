@@ -54,7 +54,7 @@ class HandlerController extends Controller
             }
         }
         Session::put('avoid_monitor', 1);
-        return response()->json(Session::all());
+        return session()->getId();
         /*return response()->json([
             'status' => 'ok',
             'action' => 'change-lang',
