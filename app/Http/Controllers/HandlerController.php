@@ -26,7 +26,6 @@ class HandlerController extends Controller
             case 'remember-me':
                 return $this->rememberMe($request);
             case 'check-hash':
-                return response()->json(['status' => 'we entered the handler'], 400);
                 return $this->checkHash($request);
             case 'create-user':
                 return $this->createUser($request);
