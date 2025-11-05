@@ -52,6 +52,6 @@ Route::middleware(['avoid.robots'])->group(function () {
         }
     });
 
-    Route::post('handler', [HandlerController::class, 'handle2']);
+    Route::post('handler2', [HandlerController::class, 'handle']);
 
 });
