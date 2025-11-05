@@ -52,6 +52,7 @@ Route::middleware(['avoid.robots'])->group(function () {
         }
     });
 
-    Route::post('handler', [HandlerController::class, 'handle']);
+    //Route::post('handler', [HandlerController::class, 'handle']);
+    Route::post('handler', function() {return response()->json(['status' => json_encode(session()->all())], 400);});
 
 });
