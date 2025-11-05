@@ -5,7 +5,6 @@ import $ from 'jquery';
 
 $(function(){
     if (!window.AppData.cookiePermission) { 
-        console.log('working');
         if (localStorage.getItem('visit_token') !== null) {
             let formData = {
                 'id-token': localStorage.getItem('visit_token'),
@@ -26,6 +25,7 @@ $(function(){
 $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
 
 function cookiePermission() {
+    console.log('cookie function');
     if (!document.getElementById('cookies')) {
         var askPermission = document.createElement("div");
         askPermission.className = "cookies";
