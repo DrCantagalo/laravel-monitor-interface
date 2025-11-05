@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HandlerController extends Controller
 {
-    public function handle(Request $request)
+    public function handle2(Request $request)
     {
         switch ($request->input('user-verb')) {
             case 'change-lang':
