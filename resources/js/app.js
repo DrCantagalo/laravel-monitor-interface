@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 $(function(){
     if (!window.AppData.cookiePermission) { 
+        console.log('working');
         if (localStorage.getItem('visit_token') !== null) {
             let formData = {
                 'id-token': localStorage.getItem('visit_token'),
