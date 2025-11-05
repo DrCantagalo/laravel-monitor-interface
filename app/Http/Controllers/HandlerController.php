@@ -139,9 +139,9 @@ class HandlerController extends Controller
             'email' => 'required|email',
         ]);
 
-        /*if (!Hash::check($request->input(__('secret-code')), config('app.secret_hash'))) {
+        if (!Hash::check($request->input(__('secret-code')), "IMPOSSIBLETOGUESS")) {
             return back()->withErrors([__('secret-code') => __('Invalid secret code.')])->withInput();
-        }*/
+        }
         
         $email = $request->input('email');
         $verification_code = Str::random(14);

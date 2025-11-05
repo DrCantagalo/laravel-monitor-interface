@@ -9,7 +9,7 @@
                     class="space-y-4">
                         @csrf
                         <h1 class="text-2xl font-semibold text-center text-gray-800">
-                            @lang('Sign up Setup')
+                            @lang('Sign up in Laravel Monitor')
                         </h1>
 
                         <div>

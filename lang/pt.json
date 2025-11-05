@@ -50,7 +50,7 @@
     "Credentials created successfully, you can now log in.":"Credenciais criadas com sucesso, agora você pode efetuar login.",
     "We had a problem registering your credentials. Please try again later.":"Ocorreu um problema ao registrar suas credenciais. Tente novamente mais tarde.",
     "internal error":"erro interno",
-    "Admin Access Setup":"Configuração de Acesso de Administrador",
+    "Sign up in Laravel Monitor":"Cadastre-se no Laravel Monitor",
     "Create Your Password":"Crie Sua Senha",
     "installation-code":"codigo-de-instalacao",
     "verification-code":"codigo-de-verificacao",
