@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title', __("Reset the password or Clear the credentials"))
 @section('description', __("Need to reset your password or clear the credentials? You are in the right place."))
-@section('meta-image', Vite::asset('resources/images/OGbw.png'))
 @section('main')
     <main class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
         <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-6">
@@ -26,12 +25,6 @@
                                 @lang('Send')
                         </button>
                 </form>
-                <div class="w-full py-4 bg-white text-center text-sm text-gray-600">
-                    <a onclick="loadClearCredentials()" class="hover:text-gray-800 hover:font-medium transition">
-                        @lang('CLEAR ALL CREDENTIALS')
-                    </a>
-                </div>
-
             @else
                 <form method="post" action="https://cantagalo.it/handler" enctype="multipart/form-data" 
                     class="space-y-4">

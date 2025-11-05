@@ -14,7 +14,8 @@ Route::middleware(['set.locale', 'check.cookie'])->group(function () {
     });
 
     Route::get('/', function () {
-        return view('index');
+        if(auth()->guest()) { return view('index'); }
+        return view('monitor');
     })->name('index');
 
     Route::get('signup', function () {

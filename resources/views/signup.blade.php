@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', __("Let's create your admin credentials"))
-@section('description', __("When you first access the supercontrols you need to create your credentials"))
+@section('title', __("Let's create your credentials"))
+@section('description', __("When you first access the Laravel Monitor you need to create your credentials"))
 @section('main')
     <main class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
         <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-6">
@@ -9,16 +9,16 @@
                     class="space-y-4">
                         @csrf
                         <h1 class="text-2xl font-semibold text-center text-gray-800">
-                            @lang('Admin Access Setup')
+                            @lang('Sign up Setup')
                         </h1>
 
                         <div>
                             <label for="secret-hash" 
                                 class="block text-sm font-medium text-gray-700">
-                                    @lang('The secret code')
+                                    @lang('Installation code')
                             </label>
                             <input id="secret-hash" type="password" 
-                                name="@lang("secret-code")" autocomplete="off" autofocus
+                                name="@lang("installation-code")" autocomplete="off" autofocus
                                 class="mt-1 w-full rounded-md border-gray-300 focus:ring-2 
                                 focus:ring-blue-500 focus:border-blue-500">
                         </div>
@@ -52,7 +52,7 @@
                     class="space-y-4">
                         @csrf
                         <h1 class="text-2xl font-semibold text-center text-gray-800">
-                            @lang('Create Admin Password')
+                            @lang('Create Your Password')
                         </h1>
 
                         <div>
@@ -93,7 +93,7 @@
                             </label>
                         </div>
 
-                        <input type="hidden" name="user-verb" value="create-admin">
+                        <input type="hidden" name="user-verb" value="create-user">
 
                         <button type="submit"
                             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 

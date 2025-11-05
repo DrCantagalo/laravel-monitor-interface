@@ -25,12 +25,12 @@ class HandlerController extends Controller
                 return $this->cookiePermission($request);
             case 'remember-me':
                 return $this->rememberMe($request);
-            /*case 'check-hash':
+            case 'check-hash':
                 return $this->checkHash($request);
-            case 'create-admin':
-                return $this->createAdmin($request);
+            case 'create-user':
+                return $this->createUser($request);
             case 'sign-in':
-                return $this->signin($request);*/
+                return $this->signin($request);
             default:
                 return response()->json(['status' => 'invalid-verb'], 400);
         }
@@ -126,26 +126,22 @@ class HandlerController extends Controller
         ]);
     }
 
-    /*protected function checkHash(Request $request)
+    protected function checkHash(Request $request)
     {
-        App::setLocale(session('lang'));
-
-        if(User::count()){
-            return back()->withErrors(['ERROR' => __('Admin already exist.')])->withInput();
-        }
+        //App::setLocale(session('lang'));
 
         if(session('email_temp', false) || session('verification_code', false)){
             return back()->withErrors(['ERROR' => __('Wrong data.')])->withInput();
         }
 
         $request->validate([
-            __('secret-code') => 'required|string',
+            __('installation-code') => 'required|string',
             'email' => 'required|email',
         ]);
 
-        if (!Hash::check($request->input(__('secret-code')), config('app.secret_hash'))) {
+        /*if (!Hash::check($request->input(__('secret-code')), config('app.secret_hash'))) {
             return back()->withErrors([__('secret-code') => __('Invalid secret code.')])->withInput();
-        }
+        }*/
         
         $email = $request->input('email');
         $verification_code = Str::random(14);
@@ -186,15 +182,11 @@ class HandlerController extends Controller
         Session::put('email_temp', $email);
         Session::put('verification_code', $verification_code);
         return back();
-    }*/
+    }
 
-    /*public function createAdmin(Request $request)
+    public function createUser(Request $request)
     {
-        App::setLocale(session('lang'));
-        
-        if(User::count()){
-            return back()->withErrors(['ERROR' => __('Admin already exist.')])->withInput();
-        }
+        //App::setLocale(session('lang'));
 
         if(!session('email_temp', false) || !session('verification_code', false)){
             return back()->withErrors(['ERROR' => __('Wrong data.')])->withInput();
@@ -228,26 +220,26 @@ class HandlerController extends Controller
 
         try {
             User::create([
-                'name' => 'Postmaster',
+                'name' => 'USER' . Str::random(7) . time(),
                 'email' => $email,
                 'password' => Hash::make($request->input(__("created-password"))),
                 'email_verified_at' => now(),
             ]);
 
             session()->forget(['email_temp', 'verification_code']);
-            return redirect()->route('supercontrols')
+            return redirect()->route('index')
                 ->with(__('success'), __("Credentials created successfully, you can now log in."));
         } catch (\Exception $e) {
-            Log::error('Error in admin creation: ' . $e->getMessage());
+            Log::error('Error in user creation: ' . $e->getMessage());
 
             return back()->withErrors([
                 __("internal error") => __("We had a problem registering your credentials. Please try again later.")
             ]);
         }
-    }*/
+    }
 
-    /*public function signin(Request $request){
-        App::setLocale(session('lang'));
+    public function signin(Request $request){
+        //App::setLocale(session('lang'));
 
         $request->validate([
             'email' => 'required|email',
@@ -260,5 +252,5 @@ class HandlerController extends Controller
             return back();
         }
         else{ return back()->withErrors(['email' => __('Invalid Credentials.')])->withInput(); }
-    }*/
+    }
 }
