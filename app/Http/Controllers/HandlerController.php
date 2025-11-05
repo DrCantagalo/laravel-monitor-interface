@@ -139,8 +139,8 @@ class HandlerController extends Controller
             'email' => 'required|email',
         ]);
 
-        if (!Hash::check($request->input(__('secret-code')), "IMPOSSIBLETOGUESS")) {
-            return back()->withErrors([__('secret-code') => __('Invalid secret code.')])->withInput();
+        if (!Hash::check($request->input(__('installation-code')), "IMPOSSIBLETOGUESS")) {
+            return back()->withErrors([__('installation-code') => __('Invalid installation code.')])->withInput();
         }
         
         $email = $request->input('email');

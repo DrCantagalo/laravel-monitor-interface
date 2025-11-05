@@ -35,7 +35,7 @@
     "Installation code":"Código de instalação",
     "Your email address":"Seu endereço de email",
     "Show the hidden texts":"Mostrar os textos ocultos",
-    "Invalid secret code.":"Código secreto inválido.",
+    "Invalid installation code.":"Código de instalação inválido.",
     "Welcome, dear user! We are sending the security code below to verify that this email is yours":"Bem-vindo, caro usuário! Estamos enviando o código de segurança abaixo para verificar se este e-mail é seu",
     "This code must be entered on the page where you requested registration, in the \"Verification Code\" field.":"Este código deve ser inserido na página onde você solicitou o registro, no campo \"Código de Verificação\".",
     "no-reply":"nao-responder",
