@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HandlerController extends Controller
 {
-    public function handle2(Request $request)
+    public function handle(Request $request)
     {
         switch ($request->input('user-verb')) {
             case 'change-lang':
@@ -26,6 +26,7 @@ class HandlerController extends Controller
             case 'remember-me':
                 return $this->rememberMe($request);
             case 'check-hash':
+                return response()->json(['status' => 'we entered the handler'], 400);
                 return $this->checkHash($request);
             case 'create-user':
                 return $this->createUser($request);
