@@ -8,7 +8,7 @@
                 class="space-y-4">
                 @csrf
                 <h1 class="text-2xl font-semibold text-center text-gray-800">
-                    @lang('Sign in to') Laravel Monitor
+                    @lang('Sign in to') Laravel Monitor - {{ json_encode(session()->all()) }}
                 </h1>
                 <div>
                     <label for="email" 
