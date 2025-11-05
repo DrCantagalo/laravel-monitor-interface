@@ -4,6 +4,7 @@ import './gsap';
 import $ from 'jquery';
 
 $(function(){
+    console.log(window.location.origin);
     if (!window.AppData.cookiePermission) { 
         if (localStorage.getItem('visit_token') !== null) {
             let formData = {
